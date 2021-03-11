@@ -5,6 +5,7 @@ import java.util.Map;
 
 public class Time {
     private String nome;
+    private int id;
     private Map<Campeonato, Integer> pontos = new HashMap<>();
 
 
@@ -19,6 +20,10 @@ public class Time {
     public void addTime(Campeonato campeonato) { this.pontos.put(campeonato, 0);}
 
     public void addTime(Campeonato campeonato, Integer pontos) { this.pontos.put(campeonato, pontos);}
+
+    public int getId() { return id; }
+
+    public void setId(Integer id) { this.id = id; }
 
 
     }

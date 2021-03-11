@@ -13,7 +13,7 @@ import java.util.*;
 @Service
 
 public class CampeonatoService {
-    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", new Locale("pt", "BR"));
+    DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
     @Autowired
     private TimeService timeService;
     private List<Campeonato> campeonatos = new ArrayList<>();
@@ -27,23 +27,24 @@ public class CampeonatoService {
         return this.campeonatos.get(id);
     }
 
-    public Campeonato criarCampeonato(Map<String, String> params) throws ParseException {
+    public Campeonato criarCampeonato(Map<String, String> json) throws ParseException {
         Campeonato newCampeonato = new Campeonato();
-        newCampeonato.setNome(params.get("nome"));
-        newCampeonato.setInicioData(dateFormat.parse(params.get("inicio")));
-        newCampeonato.setFinalData(dateFormat.parse(params.get("fim")));
+        newCampeonato.setId(sequencialNumber());
+        newCampeonato.setNome(json.get("nome"));
+        newCampeonato.setInicioData(dateFormat.parse(json.get("inicio")));
+        newCampeonato.setFinalData(dateFormat.parse(json.get("fim")));
         this.campeonatos.add(newCampeonato);
         return newCampeonato;
     }
 
-    public Map<String,String> addTime(Integer id, Map<String, Integer> params) {
+    public Map<String,String> addTime(Integer id, Map<String, Integer> json) {
     Map<String, String> responda = new HashMap<>();
     Campeonato campeonato = this.campeonatos.get(id);
-    Integer idTime = params.get("idTime");
+    Integer idTime = json.get("idTime");
 
         if (Objects.nonNull(campeonato) && Objects.nonNull(idTime)) {
             Time time;
-            Integer pontos = params.get("pontos");
+            Integer pontos = json.get("pontos");
             if (Objects.nonNull(pontos)) {
                 time = this.timeService.addTime(idTime, campeonato, pontos);
             } else {
@@ -53,7 +54,7 @@ public class CampeonatoService {
             responda.put("mensagem", "sucesso.");
             return responda;
         }
-        responda.put("mensagem", "falhou.");
+        responda.put("mensagem", "falhou");
         responda.put("mensagem", String.format("%s não pode ser nulo.", Objects.isNull(campeonato) ? "Campeonato" : "Time"));
         return responda;
     }
@@ -70,5 +71,9 @@ public class CampeonatoService {
             ranking.add(pontosTime);
         });
         return ranking;
+    }
+    Integer seqNumber = 0;
+    private Integer sequencialNumber(){
+        return seqNumber ++;
     }
 }

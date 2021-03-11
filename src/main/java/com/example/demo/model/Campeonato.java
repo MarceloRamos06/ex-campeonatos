@@ -9,6 +9,8 @@ public class Campeonato {
     private String nome;
     private Date inicioData;
     private Date finalData;
+    private int id;
+
     private List<Time> fut = new ArrayList<>();
 
     public String getNome() { return nome; }
@@ -26,6 +28,10 @@ public class Campeonato {
     public List<Time> getFut() { return fut; }
 
     public void addFut(Time time) { fut.add(time); }
+
+    public int getId() { return id; }
+
+    public void setId(int id) { this.id = id; }
 
     public static class Ranking implements Comparator<Time> {
         private Campeonato campeonato;

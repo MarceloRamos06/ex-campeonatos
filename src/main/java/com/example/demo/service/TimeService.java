@@ -24,20 +24,20 @@ public class TimeService {
 
     public Time CriarTimes(Map<String, String> json) {
         Time time = new Time();
+        time.setId(sequencialNumber());
         time.setNome(json.get("nome"));
         times.add(time);
         return time;
 
     }
 
-
-    public Map<String, String> addTime(Integer id, Map<String, Integer> params){
+    public Map<String, String> addTime(Integer id, Map<String, Integer> json){
         Map<String, String> responde = new HashMap<>();
-        Campeonato campeonato = this.campeonatoService.getCampeonato(params.get("idCampeonato"));
+        Campeonato campeonato = this.campeonatoService.getCampeonato(json.get("idCampeonato"));
 
         if(Objects.nonNull(campeonato)) {
             Time time;
-            Integer pontos = params.get("Pontos");
+            Integer pontos = json.get("Pontos");
             if (Objects.nonNull(pontos)) {
                 time = this.addTime(id, campeonato, pontos);
             } else {
@@ -69,7 +69,13 @@ public class TimeService {
                 .filter(time -> time.getPontos().keySet().contains(campeonato))
                 .collect(Collectors.toList());
     }
+
+    Integer seqNumber = 0;
+    private Integer sequencialNumber(){
+        return seqNumber ++;
+    }
 }
+
 
 
 
