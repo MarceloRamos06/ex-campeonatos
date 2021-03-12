@@ -1,4 +1,5 @@
 package com.example.demo.api;
+
 import com.example.demo.model.Time;
 import com.example.demo.service.TimeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,25 +14,16 @@ public class TimeController {
     @Autowired
     private TimeService service;
 
+    //listar todos os times criados
     @GetMapping("/times")
-    public List<Time> listaTimes() { return this.service.listaTimes();}
+    public List<Time> listarTimes() { return this.service.getTimes();}
 
+    //buscar times pelo seu id
     @GetMapping("/times/{id}")
-    public Time getTime(@PathVariable Integer id) { return this.service.getTime(id); }
+    public Time mostraTime(@PathVariable Integer id) { return this.service.mostraTime(id); }
 
-
+    //criar os times
     @PostMapping("/times")
-    public Time criarTimes(@RequestBody Map<String, String> json) { return this.service.CriarTimes(json);}
-
-    @PostMapping("/times/{id}/campeonatos")
-    public Map<String, String> addTime(@PathVariable Integer id, Map<String, Integer> json) {
-        return this.service.addTime(id, json);
-    }
-
+    public Time criarTime (@RequestBody Map<String, String> json) { return this.service.criarTimes(json);}
 
     }
-
-
-
-
-

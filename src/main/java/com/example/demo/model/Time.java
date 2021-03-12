@@ -1,32 +1,22 @@
 package com.example.demo.model;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class Time {
+    private int idTime;
     private String nome;
-    private int id;
-    private Map<Campeonato, Integer> pontos = new HashMap<>();
-
+    private int pontosTime;
 
     public String getNome() { return nome; }
 
     public void setNome(String nome) { this.nome = nome; }
 
-    public Map<Campeonato, Integer> getPontos() { return pontos;}
+    public int getPontosTime() { return pontosTime; }
 
-    public Integer getPontosC(Campeonato campeonato) { return this.pontos.get(campeonato);}
+    public void setPontosTime(Integer pontosTime) { this.pontosTime = pontosTime; }
 
-    public void addTime(Campeonato campeonato) { this.pontos.put(campeonato, 0);}
+    public int getIdTime() { return idTime; }
 
-    public void addTime(Campeonato campeonato, Integer pontos) { this.pontos.put(campeonato, pontos);}
-
-    public int getId() { return id; }
-
-    public void setId(Integer id) { this.id = id; }
-
-
-    }
+    public void setIdTime(Integer idTime) { this.idTime = idTime; }
 
 
 
+}

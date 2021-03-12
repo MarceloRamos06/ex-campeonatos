@@ -1,49 +1,29 @@
 package com.example.demo.model;
 
-import java.util.ArrayList;
-import java.util.Comparator;
+
 import java.util.Date;
-import java.util.List;
 
 public class Campeonato {
+    private int idCamp;
     private String nome;
-    private Date inicioData;
-    private Date finalData;
-    private int id;
+    private Date dataInicio;
+    private Date dataFinal;
 
-    private List<Time> fut = new ArrayList<>();
+    public int getIdCamp() { return idCamp; }
+
+    public void setIdCamp(int idCamp) { this.idCamp = idCamp; }
 
     public String getNome() { return nome; }
 
     public void setNome(String nome) { this.nome = nome; }
 
-    public Date getInicioData() { return inicioData; }
+    public Date getDataInicio() { return dataInicio; }
 
-    public void setInicioData(Date inicioData) { this.inicioData = inicioData; }
+    public void setDataInicio(Date dataInicio) { this.dataInicio = dataInicio; }
 
-    public Date getFinalData() { return finalData; }
+    public Date getDataFinal() { return dataFinal; }
 
-    public void setFinalData(Date finalData) { this.finalData = finalData; }
+    public void setDataFinal(Date dataFinal) { this.dataFinal = dataFinal; }
 
-    public List<Time> getFut() { return fut; }
+}
 
-    public void addFut(Time time) { fut.add(time); }
-
-    public int getId() { return id; }
-
-    public void setId(int id) { this.id = id; }
-
-    public static class Ranking implements Comparator<Time> {
-        private Campeonato campeonato;
-
-        public Ranking(Campeonato campeonato) { this.campeonato = campeonato; }
-
-        @Override
-        public int compare(Time o1, Time o2) {
-            return o2.getPontos() .get(campeonato).compareTo(o1.getPontos().get(campeonato));
-        }
-
-    }
-
-
-    }
