@@ -35,14 +35,14 @@ public class TimeService {
         return seqT ++;
     }
 
-    //random potuação time
+    //random pontuação time
     Random aleatorio = new Random();
     private Integer numPon() {
     Integer numP = aleatorio.nextInt(40);
         return numP;
     }
 
-    //faz atribuição da id
+    //faz busca pela id
     public Time mostraTime(Integer id) {
         return this.times.get(id);
     }

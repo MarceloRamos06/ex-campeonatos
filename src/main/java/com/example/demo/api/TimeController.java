@@ -27,3 +27,12 @@ public class TimeController {
     public Time criarTime (@RequestBody Map<String, String> json) { return this.service.criarTimes(json);}
 
     }
+
+
+   /* localhost:8080/times
+      localhost:8080/times/2
+
+      {
+        "nome": "Corinthians"
+        }
+    */
