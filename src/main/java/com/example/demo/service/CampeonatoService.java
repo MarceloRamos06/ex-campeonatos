@@ -14,7 +14,7 @@ import java.util.Map;
 
 public class CampeonatoService {
 
-    //formato de data e hora
+    //formato de data
     SimpleDateFormat formatoData = new SimpleDateFormat("dd-MM-yyyy");
     @Autowired
 
