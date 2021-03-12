@@ -38,7 +38,7 @@ public class TimeService {
     //random pontuação time
     Random aleatorio = new Random();
     private Integer numPon() {
-    Integer numP = aleatorio.nextInt(40);
+    Integer numP = aleatorio.nextInt(50) +1;
         return numP;
     }
 

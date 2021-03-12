@@ -44,4 +44,7 @@ public class CampeonatoService {
         return seqC ++;
     }
 
+    //faz busca pela id
+    public Campeonato mostraCamp(Integer id) { return this.campeonatos.get(id); }
+
 }
