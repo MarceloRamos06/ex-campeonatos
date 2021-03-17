@@ -1,29 +1,40 @@
 package com.example.demo.model;
 
 
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 
+@Getter
+@Setter
+@Table(name = "campeonato")
+@Entity(name = "Campeonato")
 public class Campeonato {
+
+    @Id
+    @Column(name = "id")
     private int idCamp;
+
+    @Column
     private String nome;
+
+    @Column(name = "data_inicio")
     private Date dataInicio;
+
+    @Column
     private Date dataFinal;
 
-    public int getIdCamp() { return idCamp; }
+    // Ignora salvar no banco de dados
+    @Transient
+    private ArrayList<Time> timesParticipantes = new ArrayList<>();
 
-    public void setIdCamp(int idCamp) { this.idCamp = idCamp; }
+    //private int nome;
+    // public void setNome(String nome)  { this.nome = nome; }
 
-    public String getNome() { return nome; }
-
-    public void setNome(String nome) { this.nome = nome; }
-
-    public Date getDataInicio() { return dataInicio; }
-
-    public void setDataInicio(Date dataInicio) { this.dataInicio = dataInicio; }
-
-    public Date getDataFinal() { return dataFinal; }
-
-    public void setDataFinal(Date dataFinal) { this.dataFinal = dataFinal; }
 
 }
+
 

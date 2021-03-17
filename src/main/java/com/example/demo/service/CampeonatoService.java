@@ -1,25 +1,23 @@
 package com.example.demo.service;
 
 import com.example.demo.model.Campeonato;
+import com.example.demo.model.Time;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
-
 public class CampeonatoService {
-
     //formato de data
     SimpleDateFormat formatoData = new SimpleDateFormat("dd-MM-yyyy");
+
     @Autowired
+    private TimeService service;
 
     //criacao de uma lista vazia
-    private TimeService timeService;
     private List<Campeonato> campeonatos = new ArrayList<>();
 
     public List<Campeonato> listaCampeonatos() {
@@ -36,7 +34,18 @@ public class CampeonatoService {
         this.campeonatos.add(novoCamp);
         return novoCamp;
 
+
     }
+
+    public Campeonato inserirTime(Integer id, Map<String, String> json) {
+        Campeonato camp = campeonatos.get(id);
+        Time timep = this.service.mostraTime(Integer.parseInt(json.get("idTime")));
+        timep.setPontosTime(service.numPon());
+        camp.getTimesParticipantes().add(timep);
+        return camp;
+
+    }
+
 
     //contador
     Integer seqC = 0;
