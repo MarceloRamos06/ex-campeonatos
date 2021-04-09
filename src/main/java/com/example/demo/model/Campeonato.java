@@ -28,8 +28,9 @@ public class Campeonato {
     private Date dataFinal;
 
     // Ignora salvar no banco de dados
-    @Transient
-    private ArrayList<Time> timesParticipantes = new ArrayList<>();
+
+
+    private ArrayList<Pontuacao> listaPontuacao = new ArrayList<>();
 
     //private int nome;
     // public void setNome(String nome)  { this.nome = nome; }

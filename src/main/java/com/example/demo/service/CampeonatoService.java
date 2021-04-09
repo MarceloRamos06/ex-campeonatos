@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.model.Campeonato;
+import com.example.demo.model.Pontuacao;
 import com.example.demo.model.Time;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,11 +41,16 @@ public class CampeonatoService {
     public Campeonato inserirTime(Integer id, Map<String, String> json) {
         Campeonato camp = campeonatos.get(id);
         Time timep = this.service.mostraTime(Integer.parseInt(json.get("idTime")));
-        timep.setPontosTime(service.numPon());
-        camp.getTimesParticipantes().add(timep);
+        Pontuacao pont = new Pontuacao();
+        pont.setTime(timep);
+        pont.setPontos(service.numPon());
+        camp.getListaPontuacao().add(pont);
+        Collections.sort(camp.getListaPontuacao(),Collections.reverseOrder());
+        //timep.setPontosTime(service.numPon());
         return camp;
 
     }
+
 
 
     //contador

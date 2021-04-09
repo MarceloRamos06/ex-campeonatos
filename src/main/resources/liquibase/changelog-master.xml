@@ -1,0 +1,15 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+</databaseChangeLog>
+    <changeSet id="1" author="marcelo">
+    <sql>
+        CREATE SCHEMA ex1;
+    </sql>
+    </changeSet>
+    <changeSet id="2" author="marcelo">
+        <createSequence catalogName="cat" cycle="false"
+                        incrementBy="1" ordered="true" schemaName="ex1"
+                        sequenceName="hibernate_sequence" startValue="0"
+    </changeSet>

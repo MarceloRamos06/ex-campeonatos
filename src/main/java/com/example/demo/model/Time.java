@@ -3,15 +3,10 @@ package com.example.demo.model;
 public class Time {
     private int idTime;
     private String nome;
-    private int pontosTime;
 
     public String getNome() { return nome; }
 
     public void setNome(String nome) { this.nome = nome; }
-
-    public int getPontosTime() { return pontosTime; }
-
-    public void setPontosTime(Integer pontosTime) { this.pontosTime = pontosTime; }
 
     public int getIdTime() { return idTime; }
 

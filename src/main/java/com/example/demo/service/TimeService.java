@@ -24,7 +24,6 @@ public class TimeService {
     //criação dos times(id, nome e pontuação aleatoria)
     public Time criarTimes(Map<String, String> json) {
         Time getTimes = new Time();
-       // getTimes.setPontosTime(numPon());
         getTimes.setIdTime(seqTime());
         getTimes.setNome(json.get("nome"));
         times.add(getTimes);
